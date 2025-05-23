@@ -1,0 +1,4 @@
+/home/pi/jni_project/build/CMakeFiles/JniAlgorithm.dir
+/home/pi/jni_project/build/CMakeFiles/test_jni_algorithm.dir
+/home/pi/jni_project/build/CMakeFiles/edit_cache.dir
+/home/pi/jni_project/build/CMakeFiles/rebuild_cache.dir

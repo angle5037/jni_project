@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/test_jni_algorithm.dir/test_jni_algorithm.cpp.o -o /home/pi/jni_project/bin/test_jni_algorithm  -ldl 

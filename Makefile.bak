@@ -1,0 +1,58 @@
+# Makefile for JniAlgorithm.so
+
+# 编译器和选项
+CXX = g++
+CXXFLAGS = -fPIC -Wall -Wextra -O2 -g
+LDFLAGS = -shared -Wl,-soname,libJniAlgorithm.so
+
+# JNI头文件路径，根据你的JDK安装位置调整
+# 如果使用其他版本的JDK，请相应修改路径
+JAVA_HOME ?= /usr/lib/jvm/default-java
+INCLUDES = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux -Iinclude
+
+# 源文件和目标文件
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
+LIB_DIR = lib
+
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+TARGET = $(BIN_DIR)/libJniAlgorithm.so
+
+# 创建目录
+$(shell mkdir -p $(OBJ_DIR) $(BIN_DIR))
+
+# 默认目标
+all: $(TARGET)
+
+# 编译规则
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+# 链接规则
+$(TARGET): $(OBJS)
+	$(CXX) $(LDFLAGS) -o $@ $^ -ldl
+
+# 安装
+install: $(TARGET)
+	mkdir -p /usr/local/lib/
+	cp $(TARGET) /usr/local/lib/
+	ldconfig
+
+# 清理
+clean:
+	rm -rf $(OBJ_DIR)/* $(BIN_DIR)/*
+
+# 帮助信息
+help:
+	@echo "可用的目标:"
+	@echo "  all     - 构建共享库 (默认)"
+	@echo "  install - 安装共享库到系统"
+	@echo "  clean   - 删除所有构建文件"
+	@echo "  help    - 显示此帮助信息"
+	@echo ""
+	@echo "环境变量:"
+	@echo "  JAVA_HOME - JDK安装路径 (当前: $(JAVA_HOME))"
+
+.PHONY: all install clean help

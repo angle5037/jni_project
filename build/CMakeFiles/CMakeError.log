@@ -1,0 +1,23 @@
+Performing C++ SOURCE FILE Test JNI_INCLUDE_PATH2_OPTIONAL failed with the following output:
+Change Dir: /home/pi/jni_project/build/CMakeFiles/CMakeScratch/TryCompile-NMUZzB
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_850f1/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_850f1.dir/build.make CMakeFiles/cmTC_850f1.dir/build
+gmake[1]: Entering directory '/home/pi/jni_project/build/CMakeFiles/CMakeScratch/TryCompile-NMUZzB'
+Building CXX object CMakeFiles/cmTC_850f1.dir/src.cxx.o
+/usr/bin/c++ -DJNI_INCLUDE_PATH2_OPTIONAL -I/usr/lib/jvm/java-17-openjdk-arm64/include  -o CMakeFiles/cmTC_850f1.dir/src.cxx.o -c /home/pi/jni_project/build/CMakeFiles/CMakeScratch/TryCompile-NMUZzB/src.cxx
+In file included from /home/pi/jni_project/build/CMakeFiles/CMakeScratch/TryCompile-NMUZzB/src.cxx:2:
+/usr/lib/jvm/java-17-openjdk-arm64/include/jni.h:45:10: fatal error: jni_md.h: No such file or directory
+   45 | #include "jni_md.h"
+      |          ^~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_850f1.dir/build.make:78: CMakeFiles/cmTC_850f1.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/home/pi/jni_project/build/CMakeFiles/CMakeScratch/TryCompile-NMUZzB'
+gmake: *** [Makefile:127: cmTC_850f1/fast] Error 2
+
+
+Source file was:
+
+#include <jni.h>
+int main(void) { return 0; }
+
+

@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libJniAlgorithm.so -o /home/pi/jni_project/bin/libJniAlgorithm.so CMakeFiles/JniAlgorithm.dir/src/Algorithm.cpp.o 
